@@ -52,11 +52,11 @@ export default class NavBar extends Component {
     responseGoogle = response => {
         let userName = response.profileObj.name
         this.props.handleSuccessfulLogin(userName)
-        console.log(userName)
+        console.log(response)
     }
 
     handleSignOut = () => {
-        var auth2 = gapi.auth2.getAuthInstance();
+        let auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
             console.log('User signed out.');
             this.props.handleSuccessfulLogout()
