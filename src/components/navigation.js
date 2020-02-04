@@ -20,10 +20,10 @@ const NavBar = props => {
 
     const onSignIn = (googleUser) => {
         var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        // console.log('Name: ' + profile.getName());
+        // console.log('Image URL: ' + profile.getImageUrl());
+        // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
         props.handleSuccessfulLogin(profile.getName())
     }
 
@@ -56,6 +56,7 @@ const NavBar = props => {
             </div>
 
             <div className="right-side">
+                <h3>{props.state.userName}</h3>
                 {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
                     Sign Out
                 </a> : <div class="g-signin2" data-onsuccess={() => onSignIn()}></div>}
