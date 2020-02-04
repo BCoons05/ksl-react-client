@@ -49,7 +49,6 @@ export default class App extends Component {
       }
     
       checkLoginStatus = () => {
-          const loggedIn = response.data.logged_in
           const loggedInStatus = this.state.loggedInStatus
     
           if(userName && loggedInStatus === "LOGGED_IN") {
