@@ -14,11 +14,7 @@ export default class NavBar extends Component {
     }
 
     handleSignOut = () => {
-        let auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
             this.props.handleSuccessfulLogout()
-        });
     }
     
     render(){
