@@ -73,7 +73,7 @@ const NavigationComponent = props => {
                 {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
                     {/* <FontAwesomeIcon icon="sign-out-alt" /> */}
                     Sign Out
-                </a> : <div class="g-signin2" data-onsuccess="onSignIn"></div>}
+                </a> : <div class="g-signin2" data-onsuccess={() => onSignIn()}></div>}
             </div>
         </div>
     )
