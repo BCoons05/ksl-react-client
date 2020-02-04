@@ -51,13 +51,13 @@ export default class App extends Component {
       checkLoginStatus = () => {
           const loggedInStatus = this.state.loggedInStatus
     
-          if(userName && loggedInStatus === "LOGGED_IN") {
+          if(this.state.userName && loggedInStatus === "LOGGED_IN") {
             return loggedIn
-          }else if (userName && loggedInStatus === "NOT_LOGGED_IN") {
+          }else if (this.state.userName && loggedInStatus === "NOT_LOGGED_IN") {
             this.setState({
               loggedInStatus: "LOGGED_IN"
             })
-          }else if(!userName && loggedInStatus === "LOGGED_IN"){
+          }else if(!this.state.userName && loggedInStatus === "LOGGED_IN"){
             this.setState({
               loggedInStatus: "NOT_LOGGED_IN"
             })
