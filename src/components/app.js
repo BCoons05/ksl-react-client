@@ -29,15 +29,10 @@ export default class App extends Component {
         }
       }
 
-      setUser = (name) => {
-          this.setState({
-              userName: name
-          })
-      }
-
-      handleSuccessfulLogin = () => {
+      handleSuccessfulLogin = (name) => {
         this.setState({
-          loggedInStatus: "LOGGED_IN"
+          loggedInStatus: "LOGGED_IN",
+          userName: name
         })
       }
     

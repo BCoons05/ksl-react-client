@@ -24,8 +24,7 @@ const NavBar = props => {
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        props.handleSuccessfulLogin()
-        props.setUser(profile.getName())
+        props.handleSuccessfulLogin(profile.getName())
     }
 
     const handleSignOut = () => {
