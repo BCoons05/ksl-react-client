@@ -18,7 +18,7 @@ const NavBar = props => {
     // }
 
 
-    const onSignIn = (googleUser) => {
+    const onSignIn = () => {
         // var profile = googleUser.getBasicProfile();
         // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
         // console.log('Name: ' + profile.getName());
@@ -33,7 +33,7 @@ const NavBar = props => {
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail());
             props.handleSuccessfulLogin(profile.getName())
-          }
+          } else {console.log("can't find user info")}
         // console.log(profile.getName())
     }
 
