@@ -5,7 +5,7 @@ import axios from "axios";
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = props => {
+export default class NavBar extends Component {
 
     // const dynamicLink = (route, linkText) => {
     //     return(
@@ -18,7 +18,7 @@ const NavBar = props => {
     // }
 
 
-    const onSignIn = (googleUser) => {
+    onSignIn = (googleUser) => {
         var profile = user.getBasicProfile();
         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
         console.log('Name: ' + profile.getName());
@@ -42,13 +42,13 @@ const NavBar = props => {
         //     console.log('ID: ' + profile.getId());
         //     console.log('Full Name: ' + profile.getName());
         //     console.log('Email: ' + profile.getEmail());
-        //     props.handleSuccessfulLogin(profile.getName())
+            props.handleSuccessfulLogin(profile.getName())
         // } else {
         //       console.log("can't find user info")
         // }
     }
 
-    const handleSignOut = () => {
+    handleSignOut = () => {
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
             console.log('User signed out.');
@@ -56,33 +56,44 @@ const NavBar = props => {
         });
     }
 
-    return (
-        <div className="nav-wrapper">
-            <div className="left-side">
-            <div className="nav-link-wrapper">
-                    <NavLink exact to="/" activeClassName="nav-link-active">
-                        Home
-                    </NavLink>
-                </div>
-                <div className="nav-link-wrapper">
-                    <NavLink exact to="/search-form" activeClassName="nav-link-active">
-                        Search
-                    </NavLink>
-                </div>
-                <div className="nav-link-wrapper">
-                    <NavLink to="/user-alerts" activeClassName="nav-link-active">
-                        My Alerts
-                    </NavLink>
-                </div>
-            </div>
+    
+    componentDidMount() {
+        window.gapi.load('auth2', () => {
+            this.auth2 = gapi.auth2.init({
+            client_id: '866689668072-3ov7is4028nben3tloj0lh1emoab3me5.apps.googleusercontent.com',
+            })
+        })
+        }
+    
 
-            <div className="right-side">
-                {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
-                    Sign Out
-                </a> : <div class="g-signin2" data-onsuccess={"onSignIn"}></div>}
+    render(){
+        return (
+            <div className="nav-wrapper">
+                <div className="left-side">
+                <div className="nav-link-wrapper">
+                        <NavLink exact to="/" activeClassName="nav-link-active">
+                            Home
+                        </NavLink>
+                    </div>
+                    <div className="nav-link-wrapper">
+                        <NavLink exact to="/search-form" activeClassName="nav-link-active">
+                            Search
+                        </NavLink>
+                    </div>
+                    <div className="nav-link-wrapper">
+                        <NavLink to="/user-alerts" activeClassName="nav-link-active">
+                            My Alerts
+                        </NavLink>
+                    </div>
+                </div>
+
+                <div className="right-side">
+                    {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
+                        Sign Out
+                    </a> : <div class="g-signin2" data-onsuccess={"onSignIn"}></div>}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
-    export default withRouter(NavBar)
