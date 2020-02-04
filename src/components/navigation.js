@@ -42,7 +42,7 @@ export default class NavBar extends Component {
         //     console.log('ID: ' + profile.getId());
         //     console.log('Full Name: ' + profile.getName());
         //     console.log('Email: ' + profile.getEmail());
-            props.handleSuccessfulLogin(profile.getName())
+            this.props.handleSuccessfulLogin(profile.getName())
         // } else {
         //       console.log("can't find user info")
         // }
@@ -52,7 +52,7 @@ export default class NavBar extends Component {
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
             console.log('User signed out.');
-            props.handleSuccessfulLogout()
+            this.props.handleSuccessfulLogout()
         });
     }
 
@@ -88,7 +88,7 @@ export default class NavBar extends Component {
                 </div>
 
                 <div className="right-side">
-                    {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
+                    {this.props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
                         Sign Out
                     </a> : <div class="g-signin2" data-onsuccess={"onSignIn"}></div>}
                 </div>
