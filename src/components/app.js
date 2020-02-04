@@ -24,8 +24,15 @@ export default class App extends Component {
         // Icons();
     
         this.state = {
-          loggedInStatus: "NOT_LOGGED_IN"
+          loggedInStatus: "NOT_LOGGED_IN",
+          userName: ""
         }
+      }
+
+      setUser = (name) => {
+          this.setState({
+              userName: name
+          })
       }
 
       handleSuccessfulLogin = () => {
@@ -335,28 +342,8 @@ render() {
 
             <Switch>
               <Route exact path="/" component={Home} />
-              {/* <Route 
-                path="/auth" 
-                render={props => (
-                  <Auth
-                    {...props}
-                    handleSuccessfulLogin={this.handleSuccessfulLogin}
-                    handleUnsuccessfulLogin={this.handleUnsuccessfulLogin}
-                  />
-                )}
-
-              /> */}
               <Route path="/search-form" component={SearchForm} />
               <Route path="/user-alerts" component={UserAlerts} />
-              {/* <Route path="/user-alerts" render={props => (<Blog {...props} loggedInStatus={this.state.loggedInStatus} />)} /> */}
-              {/* <Route 
-              path="/b/:slug"
-              render={props => (
-                <BlogDetail {...props} loggedInStatus={this.state.loggedInStatus} />
-              )}  
-              /> */}
-              {/* {this.state.loggedInStatus === "LOGGED_IN" ? (this.authorizedPages()) : null} */}
-              {/* <Route path="/portfolio/:slug" component={PortfolioDetail} /> */}
               <Route component={NoMatch} />
             </Switch>
           </div>

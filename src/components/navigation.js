@@ -24,12 +24,15 @@ const NavBar = props => {
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        this.props.handleSuccessfulLogin()
+        this.props.setUser(profile.getName())
     }
 
     const handleSignOut = () => {
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
             console.log('User signed out.');
+            this.props.handleSuccessfulLogout()
         });
     }
 
@@ -51,14 +54,10 @@ const NavBar = props => {
                         My Alerts
                     </NavLink>
                 </div>
-
-                {/* {props.loggedInStatus === "LOGGED_IN" ? dynamicLink("/portfolio-manager", "Portfolio Manager") : null} */}
-                
             </div>
 
             <div className="right-side">
                 {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
-                    {/* <FontAwesomeIcon icon="sign-out-alt" /> */}
                     Sign Out
                 </a> : <div class="g-signin2" data-onsuccess={() => onSignIn()}></div>}
             </div>
