@@ -48,6 +48,7 @@ export default class App extends Component {
         })
       }
     
+    //   Not working
       checkLoginStatus = () => {
           const loggedInStatus = this.state.loggedInStatus
     
