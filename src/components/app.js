@@ -10,7 +10,7 @@ export default class App extends Component {
     constructor(props) {
         super(props)
     
-        Icons();
+        // Icons();
     
         this.state = {
           loggedInStatus: "NOT_LOGGED_IN"

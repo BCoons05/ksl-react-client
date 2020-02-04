@@ -70,12 +70,10 @@ const NavigationComponent = props => {
                 cookiePolicy={'single_host_origin'}
             /> */}
 
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
                 {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
                     {/* <FontAwesomeIcon icon="sign-out-alt" /> */}
                     Sign Out
-                </a> : null}
+                </a> : <div class="g-signin2" data-onsuccess="onSignIn"></div>}
             </div>
         </div>
     )
