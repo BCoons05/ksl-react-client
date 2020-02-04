@@ -338,6 +338,7 @@ render() {
             <NavBar 
               loggedInStatus={this.state.loggedInStatus} 
               handleSuccessfulLogout={this.handleSuccessfulLogout}
+              handleSuccessfulLogin={this.handleSuccessfulLogin}
             />
 
             <Switch>
