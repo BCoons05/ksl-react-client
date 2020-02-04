@@ -48,34 +48,26 @@ export default class App extends Component {
         })
       }
     
-    //   checkLoginStatus = () => {
-    //     return axios.get("https://api.devcamp.space/logged_in", { 
-    //       withCredentials: true 
-    //     })
-    //     .then(response => {
-    //       const loggedIn = response.data.logged_in
-        //   const loggedInStatus = this.state.loggedInStatus
+      checkLoginStatus = () => {
+          const loggedIn = response.data.logged_in
+          const loggedInStatus = this.state.loggedInStatus
     
-        //   if(loggedIn && loggedInStatus === "LOGGED_IN") {
-        //     return loggedIn
-        //   }else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
-        //     this.setState({
-        //       loggedInStatus: "LOGGED_IN"
-        //     })
-        //   }else if(!loggedIn && loggedInStatus === "LOGGED_IN"){
-        //     this.setState({
-        //       loggedInStatus: "NOT_LOGGED_IN"
-        //     })
-        //   }
-    //     })
-    //     .catch(error => {
-    //       console.log("Error", error)
-    //     })
-    //   }
+          if(userName && loggedInStatus === "LOGGED_IN") {
+            return loggedIn
+          }else if (userName && loggedInStatus === "NOT_LOGGED_IN") {
+            this.setState({
+              loggedInStatus: "LOGGED_IN"
+            })
+          }else if(!userName && loggedInStatus === "LOGGED_IN"){
+            this.setState({
+              loggedInStatus: "NOT_LOGGED_IN"
+            })
+          }
+      }
     
-    //   componentDidMount() {
-        // this.checkLoginStatus()
-    //   }
+      componentDidMount() {
+        this.checkLoginStatus()
+      }
     
     //   authorizedPages = () => {
     //       return [ <Route key="portfolio-manager" path="/portfolio-manager" component={PortfolioManager} /> ]
