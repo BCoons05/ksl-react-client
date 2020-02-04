@@ -52,6 +52,7 @@ export default class NavBar extends Component {
     responseGoogle = response => {
         let userName = response.profileObj.name
         this.props.handleSuccessfulLogin(userName)
+        console.log(userName)
     }
 
     handleSignOut = () => {
@@ -84,13 +85,13 @@ export default class NavBar extends Component {
                 </div>
 
                 <div className="right-side">
-                    {this.props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
+                    {this.props.loggedInStatus === "LOGGED_IN" ? <a onClick={this.handleSignOut}>
                         Sign Out
                     </a> : <GoogleLogin
                                 clientId="866689668072-3ov7is4028nben3tloj0lh1emoab3me5.apps.googleusercontent.com"
                                 buttonText="Login"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
+                                onSuccess={this.responseGoogle}
+                                onFailure={this.responseGoogle}
                                 cookiePolicy={'single_host_origin'}
                             />}
                 </div>
