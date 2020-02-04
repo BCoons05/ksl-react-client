@@ -56,7 +56,7 @@ const NavBar = props => {
             </div>
 
             <div className="right-side">
-                <h3>{props.state.userName}</h3>
+                <h3>{profile.getName()}</h3>
                 {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
                     Sign Out
                 </a> : <div class="g-signin2" data-onsuccess={() => onSignIn()}></div>}
