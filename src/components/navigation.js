@@ -18,7 +18,7 @@ const NavBar = props => {
     // }
 
 
-    const onSignIn = () => {
+    const onSignIn = (googleUser) => {
         gapi.load('auth2', function() {
             auth2 = gapi.auth2.init({
               client_id: 'CLIENT_ID.apps.googleusercontent.com',
@@ -73,7 +73,7 @@ const NavBar = props => {
             <div className="right-side">
                 {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
                     Sign Out
-                </a> : <div class="g-signin2" data-onsuccess={() => onSignIn()}></div>}
+                </a> : <div class="g-signin2" data-onsuccess="onSignIn"></div>}
             </div>
         </div>
     )
