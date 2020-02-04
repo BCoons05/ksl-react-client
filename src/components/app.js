@@ -7,18 +7,6 @@ import SearchForm from "./search-form"
 
 export default class App extends Component {
 
-    constructor(props){
-        super(props)
-
-        this.state={
-            redirect: false
-        }
-    }
-
-    signup = (res, type) => {
-
-    }
-
 //   searchParams = () => {
 //     const searchMake = ''
 //     const searchModel = ''
