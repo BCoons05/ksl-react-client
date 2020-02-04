@@ -1,9 +1,20 @@
 import React, { Component } from "react";
 import GoogleLogin from 'react-google-login';
+import axios from 'axios'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom"
 
 import NavBar from "./navigation"
 import Footer from "./footer"
 import SearchForm from "./search-form"
+import NoMatch from "./no-match"
+import UserAlerts from "./user-alerts"
+import Home from "./home"
 
 export default class App extends Component {
 
@@ -15,6 +26,57 @@ export default class App extends Component {
         this.state = {
           loggedInStatus: "NOT_LOGGED_IN"
         }
+      }
+
+      handleSuccessfulLogin = () => {
+        this.setState({
+          loggedInStatus: "LOGGED_IN"
+        })
+      }
+    
+      handleUnsuccessfulLogin = () => {
+        this.setState({
+          loggedInStatus: "NOT_LOGGED_IN"
+        })
+      }
+    
+      handleSuccessfulLogout = () => {
+        this.setState({
+          loggedInStatus: "NOT_LOGGED_IN"
+        })
+      }
+    
+    //   checkLoginStatus = () => {
+    //     return axios.get("https://api.devcamp.space/logged_in", { 
+    //       withCredentials: true 
+    //     })
+    //     .then(response => {
+    //       const loggedIn = response.data.logged_in
+    //       const loggedInStatus = this.state.loggedInStatus
+    
+    //       if(loggedIn && loggedInStatus === "LOGGED_IN") {
+    //         return loggedIn
+    //       }else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
+    //         this.setState({
+    //           loggedInStatus: "LOGGED_IN"
+    //         })
+    //       }else if(!loggedIn && loggedInStatus === "LOGGED_IN"){
+    //         this.setState({
+    //           loggedInStatus: "NOT_LOGGED_IN"
+    //         })
+    //       }
+    //     })
+    //     .catch(error => {
+    //       console.log("Error", error)
+    //     })
+    //   }
+    
+      componentDidMount() {
+        this.checkLoginStatus()
+      }
+    
+      authorizedPages = () => {
+          return [ <Route key="portfolio-manager" path="/portfolio-manager" component={PortfolioManager} /> ]
       }
 
 //   searchParams = () => {
@@ -261,14 +323,44 @@ export default class App extends Component {
     
 // }
 
-  render() {
+render() {
     return (
-      <div className="app">
-        <NavBar />
-        <h1>Get alerts when good deals are posted to KSL Csrs</h1>
-        <h2>Use the form below to start</h2>
-        <SearchForm />
-        <Footer />
+      <div className='container'>
+        <Router>
+          <div>
+            <NavBar 
+              loggedInStatus={this.state.loggedInStatus} 
+              handleSuccessfulLogout={this.handleSuccessfulLogout}
+            />
+
+            <Switch>
+              <Route exact path="/" component={Home} />
+              {/* <Route 
+                path="/auth" 
+                render={props => (
+                  <Auth
+                    {...props}
+                    handleSuccessfulLogin={this.handleSuccessfulLogin}
+                    handleUnsuccessfulLogin={this.handleUnsuccessfulLogin}
+                  />
+                )}
+
+              /> */}
+              <Route path="/search-form" component={SearchForm} />
+              <Route path="/user-alerts" component={UserAlerts} />
+              {/* <Route path="/user-alerts" render={props => (<Blog {...props} loggedInStatus={this.state.loggedInStatus} />)} /> */}
+              {/* <Route 
+              path="/b/:slug"
+              render={props => (
+                <BlogDetail {...props} loggedInStatus={this.state.loggedInStatus} />
+              )}  
+              /> */}
+              {this.state.loggedInStatus === "LOGGED_IN" ? (this.authorizedPages()) : null}
+              {/* <Route path="/portfolio/:slug" component={PortfolioDetail} /> */}
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+        </Router>
       </div>
     );
   }

@@ -1,10 +1,10 @@
 import React, {Component, useEffect, useState} from 'react'
 
-export default class SearchForm extends Component {
+export default class UserAlerts extends Component {
     render(){
         return(
             <div>
-                <h1>Search Form Action</h1>
+                <h1>User Alerts Go Here</h1>
             </div>
         )
     }
