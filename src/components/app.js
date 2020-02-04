@@ -52,32 +52,32 @@ export default class App extends Component {
     //     })
     //     .then(response => {
     //       const loggedIn = response.data.logged_in
-    //       const loggedInStatus = this.state.loggedInStatus
+        //   const loggedInStatus = this.state.loggedInStatus
     
-    //       if(loggedIn && loggedInStatus === "LOGGED_IN") {
-    //         return loggedIn
-    //       }else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
-    //         this.setState({
-    //           loggedInStatus: "LOGGED_IN"
-    //         })
-    //       }else if(!loggedIn && loggedInStatus === "LOGGED_IN"){
-    //         this.setState({
-    //           loggedInStatus: "NOT_LOGGED_IN"
-    //         })
-    //       }
+        //   if(loggedIn && loggedInStatus === "LOGGED_IN") {
+        //     return loggedIn
+        //   }else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
+        //     this.setState({
+        //       loggedInStatus: "LOGGED_IN"
+        //     })
+        //   }else if(!loggedIn && loggedInStatus === "LOGGED_IN"){
+        //     this.setState({
+        //       loggedInStatus: "NOT_LOGGED_IN"
+        //     })
+        //   }
     //     })
     //     .catch(error => {
     //       console.log("Error", error)
     //     })
     //   }
     
-      componentDidMount() {
-        this.checkLoginStatus()
-      }
+    //   componentDidMount() {
+        // this.checkLoginStatus()
+    //   }
     
-      authorizedPages = () => {
-          return [ <Route key="portfolio-manager" path="/portfolio-manager" component={PortfolioManager} /> ]
-      }
+    //   authorizedPages = () => {
+    //       return [ <Route key="portfolio-manager" path="/portfolio-manager" component={PortfolioManager} /> ]
+    //   }
 
 //   searchParams = () => {
 //     const searchMake = ''
