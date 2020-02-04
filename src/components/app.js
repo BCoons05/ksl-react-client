@@ -7,6 +7,16 @@ import SearchForm from "./search-form"
 
 export default class App extends Component {
 
+    constructor(props) {
+        super(props)
+    
+        Icons();
+    
+        this.state = {
+          loggedInStatus: "NOT_LOGGED_IN"
+        }
+      }
+
 //   searchParams = () => {
 //     const searchMake = ''
 //     const searchModel = ''
