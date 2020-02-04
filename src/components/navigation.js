@@ -19,17 +19,23 @@ const NavBar = props => {
 
 
     const onSignIn = (googleUser) => {
-        gapi.load('auth2', function() {
-            auth2 = gapi.auth2.init({
-              client_id: 'CLIENT_ID.apps.googleusercontent.com',
-              fetch_basic_profile: false,
-              scope: 'profile'
-            });
+        var profile = user.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
 
-            auth2.signIn().then(function() {
-                console.log(auth2.currentUser.get().getId());
-              });
-            });
+        // gapi.load('auth2', function() {
+        //     auth2 = gapi.auth2.init({
+        //       client_id: 'CLIENT_ID.apps.googleusercontent.com',
+        //       fetch_basic_profile: false,
+        //       scope: 'profile'
+        //     });
+
+        //     auth2.signIn().then(function() {
+        //         console.log(auth2.currentUser.get().getId());
+        //       });
+        //     });
 
         // if (auth2.isSignedIn.get()) {
         //     var profile = auth2.currentUser.get().getBasicProfile();
@@ -73,7 +79,7 @@ const NavBar = props => {
             <div className="right-side">
                 {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
                     Sign Out
-                </a> : <div class="g-signin2" data-onsuccess="onSignIn"></div>}
+                </a> : <div class="g-signin2" data-onsuccess={"onSignIn"}></div>}
             </div>
         </div>
     )
