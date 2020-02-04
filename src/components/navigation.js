@@ -25,6 +25,7 @@ const NavBar = props => {
         // console.log('Image URL: ' + profile.getImageUrl());
         // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
         props.handleSuccessfulLogin(profile.getName())
+        console.log(profile.getName())
     }
 
     const handleSignOut = () => {
@@ -56,7 +57,6 @@ const NavBar = props => {
             </div>
 
             <div className="right-side">
-                <h3>{profile.getName()}</h3>
                 {props.loggedInStatus === "LOGGED_IN" ? <a onClick={handleSignOut}>
                     Sign Out
                 </a> : <div class="g-signin2" data-onsuccess={() => onSignIn()}></div>}
