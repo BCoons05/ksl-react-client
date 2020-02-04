@@ -355,7 +355,7 @@ render() {
                 <BlogDetail {...props} loggedInStatus={this.state.loggedInStatus} />
               )}  
               /> */}
-              {this.state.loggedInStatus === "LOGGED_IN" ? (this.authorizedPages()) : null}
+              {/* {this.state.loggedInStatus === "LOGGED_IN" ? (this.authorizedPages()) : null} */}
               {/* <Route path="/portfolio/:slug" component={PortfolioDetail} /> */}
               <Route component={NoMatch} />
             </Switch>
