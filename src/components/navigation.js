@@ -57,7 +57,7 @@ export default class NavBar extends Component {
                 <div className="right-side">
                     {this.props.loggedInStatus === "LOGGED_IN" ? (
                     <div>
-                        <h2>Logged in as {this.state.loggedInName}</h2>
+                        <h4>Welcome, {this.state.loggedInName}</h4>
                         <a onClick={this.handleSignOut}>
                             Sign Out
                         </a>
