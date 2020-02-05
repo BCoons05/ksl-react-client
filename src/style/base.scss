@@ -1,0 +1,23 @@
+body {
+    margin: 0px;
+    font-family: "Titillium Web", sans-serif;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .form-wrapper{
+      display: flex;
+      justify-content: center;
+
+      .search-btn-wrapper{
+          display: flex;
+          justify-content: center;
+      }
+
+      .btn{
+          margin-top: 30px;
+      }
+  }
