@@ -13,7 +13,8 @@ export default class SearchForm extends Component {
             searchMilesMin: 0,
             searchMilesMax: 100000000,
             searchPriceMin: 0,
-            searchPriceMax: 50000000
+            searchPriceMax: 50000000,
+            searchResults: []
         }
     }
 
@@ -28,201 +29,7 @@ export default class SearchForm extends Component {
         .then(response => {
             // console.log(response.data)
             response.data.forEach(car => {
-                // this is awful but it works. TODO make this less awful with functions PLEASE
-                // Seriously this is the worst thing I have ever done
-                if(this.state.searchMake && car.make.toLowerCase() === this.state.searchMake.toLowerCase()){
-                    if(this.state.searchModel && car.model.toLowerCase() === this.state.searchModel.toLowerCase()){
-                        if(this.state.searchYearMin && this.state.searchYearMax && car.year >= this.state.searchYearMin && car.year <= this.state.searchYearMax){
-                            if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                } else if(this.state.searchPriceMax = null){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                }
-                            } else if(!this.state.searchMilesMin && this.state.searchMilesMax && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                    if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    } else if(this.state.searchPriceMax = null){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    }
-                                }
-                            } else if(!this.state.searchMilesMin && !this.state.searchMilesMax){
-                                if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                    if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    } else if(this.state.searchPriceMax = null){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (!this.state.searchYearMax && this.state.searchYearMin && car.year >= this.state.searchYearMin){
-                            if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                } else if(this.state.searchPriceMax = null){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                }
-                            }
-                        } else if(!this.state.searchYearMax && !this.state.searchYearMin){
-                            if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                } else if(this.state.searchPriceMax = null){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                }
-                            }
-                        } 
-                    } else if(!this.state.searchModel){
-                        if(car.year >= this.state.searchYearMin && car.year <= this.state.searchYearMax){
-                            if(car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                    console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                }
-                            }
-                        }
-                    }
-                } else if(!this.state.searchMake){
-                    if(this.state.searchModel && car.model.toLowerCase() === this.state.searchModel.toLowerCase()){
-                        if(this.state.searchYearMin && this.state.searchYearMax && car.year >= this.state.searchYearMin && car.year <= this.state.searchYearMax){
-                            if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                } else if(this.state.searchPriceMax = null){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                }
-                            } else if(!this.state.searchMilesMin && this.state.searchMilesMax && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                    if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    } else if(this.state.searchPriceMax = null){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    }
-                                }
-                            } else if(!this.state.searchMilesMin && !this.state.searchMilesMax){
-                                if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                    if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    } else if(this.state.searchPriceMax = null){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (!this.state.searchYearMax && this.state.searchYearMin && car.year >= this.state.searchYearMin){
-                            if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                } else if(this.state.searchPriceMax = null){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                }
-                            } else if(!this.state.searchMilesMin && this.state.searchMilesMax && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                    if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    } else if(this.state.searchPriceMax = null){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    }
-                                }
-                            } else if(!this.state.searchMilesMin && !this.state.searchMilesMax){
-                                if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                    if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    } else if(this.state.searchPriceMax = null){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    }
-                                }
-                            }
-                        } else if(!this.state.searchYearMax && !this.state.searchYearMin){
-                            if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                } else if(this.state.searchPriceMax = null){
-                                    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                        console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                    }
-                                }
-                            } else if(!this.state.searchMilesMin && this.state.searchMilesMax && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                    if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    } else if(this.state.searchPriceMax = null){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    }
-                                }
-                            } else if(!this.state.searchMilesMin && !this.state.searchMilesMax){
-                                if(this.state.searchMilesMin && this.state.searchMilesMax && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                    if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    } else if(this.state.searchPriceMax = null){
-                                        if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin){
-                                            console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                        }
-                                    }
-                                }
-                            }
-                        } 
-                    } else if(!this.state.searchModel){
-                        if(car.year >= this.state.searchYearMin && car.year <= this.state.searchYearMax){
-                            if(car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
-                                if(this.state.searchPriceMax && car.price <= this.state.searchPriceMax){
-                                    console.log(`${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
-                                }
-                            }
-                        }
-                    }
-                }
+                this.checkMake(car)
             })
         })
         // .then
@@ -258,35 +65,69 @@ export default class SearchForm extends Component {
 
 // break the horrible if statements above into functions...
 
-// checkMake = () => {
-//     if(this.state.searchMake && car.make === this.state.searchMake){
-//         checkModel()
-//     } else if(this.state.searchMake && car.make !== this.state.searchMake){
-//         // if there is a searchMake but current car doesn't match then skip it
-//     } 
-//     // if there is not make and model listed then just check by year, miles, and price
-//     else {
-//         checkYear()
-//     }
-// }
+checkMake = (car) => {
+    if(this.state.searchMake && car.make.toLowerCase() === this.state.searchMake.toLowerCase()){
+        this.checkModel(car)
+    } else if(this.state.searchMake && car.make.toLowerCase() !== this.state.searchMake.toLowerCase()){
+        null
+    } 
+    // if there is not make and model listed then just check by year, miles, and price
+    else {
+        this.checkYear(car)
+    }
+}
 
-// checkModel = () => {
-//     if(this.state.searchModel && this.state.searchModel === car.model){
-//         checkYear()
-//     }
-// }
+checkModel = (car) => {
+    if(this.state.searchModel && car.model.toLowerCase() === this.state.searchModel.toLowerCase()){
+        this.checkYear(car)
+    } else if(this.state.searchModel && car.model.toLowerCase() !== this.state.searchModel.toLowerCase()){
+        null
+    } 
+    // if there is no model listed then just check by year, miles, and price
+    else {
+        this.checkYear(car)
+    }
+}
 
-// checkYear = () => {
-    
-// }
+checkYear = (car) => {
+    if(this.state.searchYearMin && car.year >= this.state.searchYearMin && car.year <= this.state.searchYearMax){
+        this.checkMiles(car)
+    } else if(this.state.searchYearMin && car.year <= this.state.searchYearMin || car.year >= this.state.searchYearMax){
+        null
+    } 
+    // if there is no model listed then just check by year, miles, and price
+    else {
+        this.checkMiles(car)
+    }
+}
 
-// checkMiles = () => {
-    
-// }
+checkMiles = (car) => {
+    if(this.state.searchMilesMin && car.miles >= this.state.searchMilesMin && car.miles <= this.state.searchMilesMax){
+        this.checkPrice(car)
+    } else if(this.state.searchMilesMin && car.miles <= this.state.searchMilesMin || car.miles >= this.state.searchMilesMax){
+        null
+    } 
+    // if there is no model listed then just check by year, miles, and price
+    else {
+        this.checkPrice(car)
+    }
+}
 
-// checkPrice = () => {
-    
-// }
+checkPrice = (car) => {
+    if(this.state.searchPriceMin && car.price >= this.state.searchPriceMin && car.price <= this.state.searchPriceMax){
+        console.log(`found ${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
+        this.setState({searchResults: [car].concat(this.state.searchResults)})
+        console.log(this.state.searchResults)
+    } else if(this.state.searchPriceMin && car.year <= this.state.searchPriceMin || car.price >= this.state.searchPriceMax){
+        null
+    } 
+    // if there is no model listed then just check by year, miles, and price
+    else {
+        console.log(`found ${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
+        this.setState({searchResults: [car].concat(this.state.searchResults)})
+        console.log(this.state.searchResults)
+    }
+}
 
     render(){
         return(
@@ -340,6 +181,23 @@ export default class SearchForm extends Component {
                         name="searchMilesMax"
                         placeholder="Miles Max"
                         value={this.state.searchMilesMax}
+                    />
+                </div>
+                <div className="two-column">
+                    <input
+                        type="text"
+                        onChange={this.handleChange}
+                        name="searchPriceMin"
+                        placeholder="Price Min"
+                        value={this.state.searchPriceMin}
+                    />
+
+                    <input
+                        type="text"
+                        onChange={this.handleChange}
+                        name="searchPriceMax"
+                        placeholder="Price Max"
+                        value={this.state.searchPriceMax}
                     />
                 </div>
 
