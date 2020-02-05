@@ -199,7 +199,7 @@ handleSetVisible = () => {
                                         type="text"
                                         onChange={this.handleChange}
                                         name="searchMake"
-                                        placeholder="Make"
+                                        placeholder="Ex: Chevrolet not Chevy"
                                         value={this.state.searchMake}
                                     />
                                 </div>
@@ -221,7 +221,7 @@ handleSetVisible = () => {
                                         type="text"
                                         onChange={this.handleChange}
                                         name="searchYearMin"
-                                        placeholder="From Year"
+                                        placeholder="Ex: 2015"
                                         value={this.state.searchYearMin}
                                     />
                                 </div>
@@ -232,7 +232,7 @@ handleSetVisible = () => {
                                         type="text"
                                         onChange={this.handleChange}
                                         name="searchYearMax"
-                                        placeholder="Year Max"
+                                        placeholder="Ex: 2019"
                                         value={this.state.searchYearMax}
                                     />
                                 </div>
@@ -245,7 +245,7 @@ handleSetVisible = () => {
                                         type="text"
                                         onChange={this.handleChange}
                                         name="searchMilesMin"
-                                        placeholder="Miles Min"
+                                        placeholder="Ex: 50000"
                                         value={this.state.searchMilesMin}
                                     />
                                 </div>
@@ -255,7 +255,7 @@ handleSetVisible = () => {
                                         type="text"
                                         onChange={this.handleChange}
                                         name="searchMilesMax"
-                                        placeholder="Miles Max"
+                                        placeholder="Ex: 100000"
                                         value={this.state.searchMilesMax}
                                     />
                                 </div>
@@ -267,7 +267,7 @@ handleSetVisible = () => {
                                         type="text"
                                         onChange={this.handleChange}
                                         name="searchPriceMin"
-                                        placeholder="Price Min"
+                                        placeholder="Ex: 11000"
                                         value={this.state.searchPriceMin}
                                     />
                                 </div>
@@ -277,7 +277,7 @@ handleSetVisible = () => {
                                         type="text"
                                         onChange={this.handleChange}
                                         name="searchPriceMax"
-                                        placeholder="Price Max"
+                                        placeholder="Ex: 13000"
                                         value={this.state.searchPriceMax}
                                     />
                                 </div>
@@ -290,7 +290,7 @@ handleSetVisible = () => {
                     :
                     (
                     <div className="one-column">
-                            <SearchResults data={this.state.searchResults} />
+                            {this.state.searchResults.length > 0 ? <SearchResults data={this.state.searchResults} /> : <h2>No cars that match your criteria, please enter a different vehicle</h2>}
                             <button className="new-search-btn" onClick={() => this.handleSetVisible()}>New Search</button>
                     </div>
                     )
