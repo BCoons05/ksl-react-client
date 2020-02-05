@@ -23,29 +23,35 @@ export default class SearchForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
+        if(this.state.searchResults.length > 0){
+            this.setState({
+                searchResults: []
+            })
+        }
+
         if(!this.state.searchYearMin){
             this.setState({searchYearMin: 0})
-            console.log("set year min to default")
+            // console.log("set year min to default")
         }
         if(!this.state.searchYearMax){
             this.setState({searchYearMax: 2020})
-            console.log("set year max to default")
+            // console.log("set year max to default")
         }
         if(!this.state.searchMilesMin){
             this.setState({searchMilesMin: 0})
-            console.log("set miles min to default")
+            // console.log("set miles min to default")
         }
         if(!this.state.searchMilesMax){
             this.setState({searchMilesMax: 500000})
-            console.log("set miles max to default")
+            // console.log("set miles max to default")
         }
         if(!this.state.searchPriceMin){
             this.setState({searchPriceMin: 0})
-            console.log("set price min to default")
+            // console.log("set price min to default")
         }
         if(!this.state.searchPriceMax){
             this.setState({searchPriceMax: 5000000})
-            console.log("set price max to default")
+            // console.log("set price max to default")
         }
 
         axios
@@ -61,8 +67,8 @@ export default class SearchForm extends Component {
             console.log("resetting state values")
             this.setState({
                 searchResults: [car].concat(this.state.searchResults),
-                searchMake:"",
-                searchModel:"",
+                searchMake: "",
+                searchModel: "",
                 searchYearMin: "",
                 searchYearMax: "",
                 searchMilesMin: "",
@@ -70,6 +76,7 @@ export default class SearchForm extends Component {
                 searchPriceMin: "",
                 searchPriceMax: ""
             })
+            console.log(`searchMake: ${this.state.searchMake} searchModel: ${this.state.searchModel} searchYearMin: ${this.state.searchYearMin} searchYearMax: ${this.state.searchYearMax}`)
         })
         .catch(err => [
             console.log("Error getting cars, or end of data: ", err)
