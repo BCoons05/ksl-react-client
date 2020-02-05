@@ -1,4 +1,5 @@
 import React, {Component, useEffect, useState} from 'react'
+import axios from 'axios'
 
 export default class SearchForm extends Component {
     constructor(props){
@@ -17,6 +18,10 @@ export default class SearchForm extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
+
+        // console.log(`${this.state.searchMake} ${this.state.searchModel} from ${this.state.searchYearMin} to ${this.state.searchYearMax}`)
+
         axios
         // .get('http://localhost:5000/cars')
         .get('https://ksl-scraper-api-main.herokuapp.com/cars')
@@ -220,19 +225,17 @@ export default class SearchForm extends Component {
                 }
             })
         })
-        .then
-            this.setState({
-                searchMake:"",
-                searchModel:"",
-                searchYearMin: 0,
-                searchYearMax: 3000,
-                searchMilesMin: 0,
-                searchMilesMax: 100000000,
-                searchPriceMin: 0,
-                searchPriceMax: 50000000
-            })
-    
-        event.preventDefault();
+        // .then
+        //     this.setState({
+        //         searchMake:"",
+        //         searchModel:"",
+        //         searchYearMin: 0,
+        //         searchYearMax: 3000,
+        //         searchMilesMin: 0,
+        //         searchMilesMax: 100000000,
+        //         searchPriceMin: 0,
+        //         searchPriceMax: 50000000
+        //     })
       }
 
     handleChange = (event) => {
@@ -256,9 +259,9 @@ export default class SearchForm extends Component {
 // break the horrible if statements above into functions...
 
 // checkMake = () => {
-//     if(searchMake && car.make === searchMake){
+//     if(this.state.searchMake && car.make === this.state.searchMake){
 //         checkModel()
-//     } else if(searchMake && car.make !== searchMake){
+//     } else if(this.state.searchMake && car.make !== this.state.searchMake){
 //         // if there is a searchMake but current car doesn't match then skip it
 //     } 
 //     // if there is not make and model listed then just check by year, miles, and price
@@ -268,7 +271,9 @@ export default class SearchForm extends Component {
 // }
 
 // checkModel = () => {
-    
+//     if(this.state.searchModel && this.state.searchModel === car.model){
+//         checkYear()
+//     }
 // }
 
 // checkYear = () => {
