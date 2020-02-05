@@ -9,31 +9,38 @@ body {
     grid-template-columns: 1fr;
   }
 
+  button{
+    font-family: 'Permanent Marker', cursive;
+    color: #EFE9F4;
+    text-shadow: 1px 1px #5F634F;
+    font-size: 20px;
+    margin-top: 10px;
+    background-color: #5FBFF9;
+    border: 1px solid #16BAC5;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .5s ease-in-out;
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.4);
+
+    &:hover {
+      background-color: #16BAC5;
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+
   .form-wrapper{
       display: flex;
       justify-content: center;
       margin-top: 15px;
+      margin-bottom: 15px;
 
       .search-btn-wrapper{
           display: flex;
           justify-content: center;
-      }
-
-      .btn{
-          font-family: 'Permanent Marker', cursive;
-          color: #EFE9F4;
-          font-size: 20px;
-          margin-top: 10px;
-          background-color: #5FBFF9;
-          border: 1px solid #16BAC5;
-          border-radius: 10px;
-          padding-top: 10px;
-          padding-bottom: 10px;
-          transition: .5s ease-in-out;
-
-          &:hover {
-            background-color: #16BAC5;
-          }
       }
 
     .search-form-wrapper{
@@ -58,3 +65,56 @@ body {
           }
     }
   }
+
+  .search-result-car-details{
+    font-family: 'Open Sans', sans-serif;
+  }
+
+.search-page-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+
+  .search-result-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    padding-bottom: 15px;
+    width: 50vw;
+    border-radius: 8px;
+
+    &:hover{
+        background-color: #EFE9F4;
+        cursor: pointer;
+    }
+
+    .result-icon-wrapper{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-left: 20px;
+        margin-top: 15px;
+    }
+
+    .search-btn-wrapper{
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-page-wrapper{
+        display: flex;
+        justify-content: center;
+    }
+  }
+}
+
+.search-result-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .search-result-car-details{
+        display: flex;
+        justify-content: space-between;
+    }
+}

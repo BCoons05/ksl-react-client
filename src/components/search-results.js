@@ -4,12 +4,15 @@ import React from 'react'
 const SearchResults = (props) => {
     const searchResultList = props.data.map(searchResult => {
         return(
-            <div key={searchResult.id} className="search-result-wrapper">
+            <div key={searchResult.id} className="search-result-wrapper" onClick={()=> window.open(`http://${searchResult.link}`, "_blank")}>
                 <div className="search-result-content">
                     <div className="search-result-car-header">
-                        <a onClick={()=> window.open(`http://${searchResult.link}`, "_blank")}><h2>{searchResult.year} {searchResult.make} {searchResult.model}</h2></a>
+                        <h2>{searchResult.year} {searchResult.make} {searchResult.model}</h2>
                     </div>
-                    <div className="search-result-car-details">{`${searchResult.miles} miles`} {`$${searchResult.price}`}</div>
+                    <div className="search-result-car-details">
+                        <div>{`${searchResult.miles} miles`}</div>
+                        <div>{`$${searchResult.price}`}</div>
+                    </div>
                 </div>
             </div>
         )

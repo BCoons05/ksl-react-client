@@ -15,7 +15,8 @@
             margin-left: 15px;
             cursor: pointer;
             color: #EFE9F4;
-            transition: .5s;
+            text-shadow: #5F634F;
+            transition: .5s ease-in-out;
 
             &:hover {
                 color: #171D1C;
@@ -34,19 +35,20 @@
 
         a {
             color: #EFE9F4;
+            text-shadow: 1px 1px #5F634F;
             text-decoration: none;
             &:hover{
-                color: #171D1C;
+                color: #5F634F;
             }
         }
 
         &:hover{
-            border-bottom: 1px solid #171D1C;
+            text-shadow: #EFE9F4;
         }
         
         .nav-link-active {
-            border-bottom: 1px solid #171D1C;
-            color: #171D1C
+            color: #171D1C;
+            text-shadow: #EFE9F4;
         }
     }
 }

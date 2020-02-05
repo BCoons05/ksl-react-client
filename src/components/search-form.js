@@ -16,7 +16,8 @@ export default class SearchForm extends Component {
             searchMilesMax: "",
             searchPriceMin: "",
             searchPriceMax: "",
-            searchResults: []
+            searchResults: [],
+            setVisible: true
         }
     }
 
@@ -66,7 +67,6 @@ export default class SearchForm extends Component {
         .then(data => {
             console.log("resetting state values")
             this.setState({
-                searchResults: [car].concat(this.state.searchResults),
                 searchMake: "",
                 searchModel: "",
                 searchYearMin: "",
@@ -74,7 +74,9 @@ export default class SearchForm extends Component {
                 searchMilesMin: "",
                 searchMilesMax: "",
                 searchPriceMin: "",
-                searchPriceMax: ""
+                searchPriceMax: "",
+                searchParams: "",
+                setVisible: false
             })
             console.log(`searchMake: ${this.state.searchMake} searchModel: ${this.state.searchModel} searchYearMin: ${this.state.searchYearMin} searchYearMax: ${this.state.searchYearMax}`)
         })
@@ -173,117 +175,126 @@ checkPrice = (car) => {
         // console.log(`found ${car.year} ${car.make} ${car.model} ${car.price} ${car.miles} ${car.link}`)
         // console.log(`no min price entered, sending all ${car.year} ${car.make} ${car.model}`)
         this.setState({
-            searchResults: [car].concat(this.state.searchResults),
+            searchResults: [car].concat(this.state.searchResults)
         })
         // console.log(this.state.searchResults)
     }
 }
 
-renderSearchResults = () => {
-    
+handleSetVisible = () => {
+    this.setState({ setVisible: true })
 }
 
     render(){
         return(
-            <div className="form-wrapper">
-                <form onSubmit={this.handleSubmit} className="search-form-wrapper">
-                    <div className="two-column">
-                        <div>
-                            <h3>Make</h3>
-                            <input
-                                type="text"
-                                onChange={this.handleChange}
-                                name="searchMake"
-                                placeholder="Make"
-                                value={this.state.searchMake}
-                            />
-                        </div>
-                        <div>
-                            <h3>Model</h3>
-                            <input
-                                type="text"
-                                onChange={this.handleChange}
-                                name="searchModel"
-                                placeholder="Model"
-                                value={this.state.searchModel}
-                            />
-                        </div>
-                    </div>
-                    <div className="two-column">
-                        <div>
-                            <h3>From Year</h3>
-                            <input
-                                type="text"
-                                onChange={this.handleChange}
-                                name="searchYearMin"
-                                placeholder="From Year"
-                                value={this.state.searchYearMin}
-                            />
-                        </div>
+            <div className="search-page-wrapper">
+                {this.state.setVisible ? 
+                    (
+                    <div className="form-wrapper">
+                        <form onSubmit={this.handleSubmit} className="search-form-wrapper">
+                            <div className="two-column">
+                                <div>
+                                    <h3>Make</h3>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        name="searchMake"
+                                        placeholder="Make"
+                                        value={this.state.searchMake}
+                                    />
+                                </div>
+                                <div>
+                                    <h3>Model</h3>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        name="searchModel"
+                                        placeholder="Model"
+                                        value={this.state.searchModel}
+                                    />
+                                </div>
+                            </div>
+                            <div className="two-column">
+                                <div>
+                                    <h3>From Year</h3>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        name="searchYearMin"
+                                        placeholder="From Year"
+                                        value={this.state.searchYearMin}
+                                    />
+                                </div>
 
-                        <div>
-                            <h3>To Year</h3>
-                            <input
-                                type="text"
-                                onChange={this.handleChange}
-                                name="searchYearMax"
-                                placeholder="Year Max"
-                                value={this.state.searchYearMax}
-                            />
-                        </div>
-                    </div>
-                    
-                    <div className="two-column">
-                        <div>
-                            <h3>Minimum Miles</h3>
-                            <input
-                                type="text"
-                                onChange={this.handleChange}
-                                name="searchMilesMin"
-                                placeholder="Miles Min"
-                                value={this.state.searchMilesMin}
-                            />
-                        </div>
-                        <div>
-                            <h3>Maximum Miles</h3>
-                            <input
-                                type="text"
-                                onChange={this.handleChange}
-                                name="searchMilesMax"
-                                placeholder="Miles Max"
-                                value={this.state.searchMilesMax}
-                            />
-                        </div>
-                    </div>
-                    <div className="two-column">
-                        <div>
-                            <h3>Minimum Price</h3>
-                            <input
-                                type="text"
-                                onChange={this.handleChange}
-                                name="searchPriceMin"
-                                placeholder="Price Min"
-                                value={this.state.searchPriceMin}
-                            />
-                        </div>
-                        <div>
-                            <h3>Maximum Price</h3>
-                            <input
-                                type="text"
-                                onChange={this.handleChange}
-                                name="searchPriceMax"
-                                placeholder="Price Max"
-                                value={this.state.searchPriceMax}
-                            />
-                        </div>
-                    </div>
+                                <div>
+                                    <h3>To Year</h3>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        name="searchYearMax"
+                                        placeholder="Year Max"
+                                        value={this.state.searchYearMax}
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className="two-column">
+                                <div>
+                                    <h3>Minimum Miles</h3>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        name="searchMilesMin"
+                                        placeholder="Miles Min"
+                                        value={this.state.searchMilesMin}
+                                    />
+                                </div>
+                                <div>
+                                    <h3>Maximum Miles</h3>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        name="searchMilesMax"
+                                        placeholder="Miles Max"
+                                        value={this.state.searchMilesMax}
+                                    />
+                                </div>
+                            </div>
+                            <div className="two-column">
+                                <div>
+                                    <h3>Minimum Price</h3>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        name="searchPriceMin"
+                                        placeholder="Price Min"
+                                        value={this.state.searchPriceMin}
+                                    />
+                                </div>
+                                <div>
+                                    <h3>Maximum Price</h3>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        name="searchPriceMax"
+                                        placeholder="Price Max"
+                                        value={this.state.searchPriceMax}
+                                    />
+                                </div>
+                            </div>
+                            <div className="one-column">
+                                <button className="btn">Search</button>
+                            </div> 
+                        </form>
+                    </div>)
+                    :
+                    (
                     <div className="one-column">
-                        <button className="btn">Search</button>
+                            <SearchResults data={this.state.searchResults} />
+                            <button className="new-search-btn" onClick={() => this.handleSetVisible()}>New Search</button>
                     </div>
-                    <div className="one-column">
-                        <SearchResults data={this.state.searchResults} />
-                    </div>
-                </form>
+                    )
+            }
             </div>
         )
     }
