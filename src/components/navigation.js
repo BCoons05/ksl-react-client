@@ -8,13 +8,27 @@ import { NavLink } from 'react-router-dom';
 
 export default class NavBar extends Component {
 
+    constructor(){
+        super()
+
+        this.state={
+            loggedInName: ""
+        }
+    }
+
     responseGoogle = response => {
         let userName = response.profileObj.name
+        this.setState({
+            loggedInName: userName
+        })
         this.props.handleSuccessfulLogin(userName)
     }
 
     handleSignOut = () => {
             this.props.handleSuccessfulLogout()
+            this.setState({
+                loggedInName: ""
+            })
     }
     
     render(){
@@ -41,15 +55,23 @@ export default class NavBar extends Component {
                 </div>
 
                 <div className="right-side">
-                    {this.props.loggedInStatus === "LOGGED_IN" ? <a onClick={this.handleSignOut}>
-                        Sign Out
-                    </a> : <GoogleLogin
-                                clientId="866689668072-3ov7is4028nben3tloj0lh1emoab3me5.apps.googleusercontent.com"
-                                buttonText="Login"
-                                onSuccess={this.responseGoogle}
-                                onFailure={this.responseGoogle}
-                                cookiePolicy={'single_host_origin'}
-                            />}
+                    {this.props.loggedInStatus === "LOGGED_IN" ? (
+                    <div>
+                        <h2>{this.state.loggedInName}</h2>
+                        <a onClick={this.handleSignOut}>
+                            Sign Out
+                        </a>
+                    </div>
+                    )
+                    : 
+                    <GoogleLogin
+                        clientId="866689668072-3ov7is4028nben3tloj0lh1emoab3me5.apps.googleusercontent.com"
+                        buttonText="Login"
+                        onSuccess={this.responseGoogle}
+                        onFailure={this.responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
+                    }
                 </div>
             </div>
         )
