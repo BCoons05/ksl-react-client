@@ -1,6 +1,7 @@
 body {
     margin: 0px;
-    font-family: "Titillium Web", sans-serif;
+    font-family: 'Permanent Marker', cursive;
+    color: #171D1C;
   }
   
   .container {
@@ -11,6 +12,7 @@ body {
   .form-wrapper{
       display: flex;
       justify-content: center;
+      margin-top: 15px;
 
       .search-btn-wrapper{
           display: flex;
@@ -18,6 +20,41 @@ body {
       }
 
       .btn{
-          margin-top: 30px;
+          font-family: 'Permanent Marker', cursive;
+          color: #EFE9F4;
+          font-size: 20px;
+          margin-top: 10px;
+          background-color: #5FBFF9;
+          border: 1px solid #16BAC5;
+          border-radius: 10px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          transition: .5s ease-in-out;
+
+          &:hover {
+            background-color: #16BAC5;
+          }
       }
+
+    .search-form-wrapper{
+        input {
+            font-family: "Titillium Web", sans-serif;
+            color: #171D1C;
+            padding: 5px 0px;
+            width: 100%;
+            border-top: 0px;
+            border-right: 0px;
+            border-left: 0px;
+            border-bottom: 1px solid #5FBFF9;
+            background-color: transparent;
+            transition: 0.5s all ease-in-out;
+            font-size: 1.1em;
+            margin-bottom: 21px;
+        
+            &:focus {
+              outline: none;
+              border-bottom: 1px solid #16BAC5;
+            }
+          }
+    }
   }

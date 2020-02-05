@@ -2,21 +2,23 @@
     display: flex;
     justify-content: space-between;
     padding: 30px;
+    background-color: #5FBFF9;
+    box-shadow: 3px 3px 8px 5px #5F634F;
 
     .left-side {
         display: flex;
-        
+        align-items: center;
     }
 
     .right-side {
         a{
             margin-left: 15px;
             cursor: pointer;
-            color: lightseagreen;
+            color: #EFE9F4;
             transition: .5s;
 
             &:hover {
-                color: darkseagreen;
+                color: #171D1C;
             }
         }
     }
@@ -28,23 +30,23 @@
 
         margin-right: 20px;
         text-transform: uppercase;
-        font-size: 0.9rem;
+        font-size: 20px;
 
         a {
-            color: gray;
+            color: #EFE9F4;
             text-decoration: none;
             &:hover{
-                color: black;
+                color: #171D1C;
             }
         }
 
         &:hover{
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #171D1C;
         }
         
         .nav-link-active {
-            border-bottom: 1px solid black;
-            color: black
+            border-bottom: 1px solid #171D1C;
+            color: #171D1C
         }
     }
 }
