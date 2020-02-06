@@ -3,6 +3,7 @@
     justify-content: space-between;
     padding: 30px;
     background-color: #5FBFF9;
+    height: 50px;
     box-shadow: 3px 3px 8px 5px #5F634F;
 
     .left-side {
@@ -11,6 +12,8 @@
     }
 
     .right-side {
+        display: flex;
+        align-items: center;
         text-shadow: 1px 1px #5F634F;
         a{
             margin-left: 15px;
