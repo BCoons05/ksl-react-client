@@ -290,8 +290,10 @@ handleSetVisible = () => {
                     :
                     (
                     <div className="one-column">
+                        <div className="results-container">
                             {this.state.searchResults.length > 0 ? <SearchResults data={this.state.searchResults} /> : <h2>No cars that match your criteria, please enter a different vehicle</h2>}
                             <button className="new-search-btn" onClick={() => this.handleSetVisible()}>New Search</button>
+                        </div>
                     </div>
                     )
             }

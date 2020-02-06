@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Khand', sans-serif;
     color: #171D1C;
   }
   
@@ -14,11 +14,11 @@ body {
   }
 
   button{
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Khand', sans-serif;
     color: #EFE9F4;
     text-shadow: 1px 1px #5F634F;
     font-size: 20px;
-    margin-top: 10px;
+    margin: 20px;
     background-color: #5FBFF9;
     border: 1px solid #16BAC5;
     border-radius: 10px;
@@ -39,8 +39,14 @@ body {
   .form-wrapper{
       display: flex;
       justify-content: center;
+      background-color: #EFE9F4;
       margin-top: 15px;
       margin-bottom: 15px;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      border-radius: 8px;
+      
 
       .search-btn-wrapper{
           display: flex;
@@ -49,7 +55,7 @@ body {
 
     .search-form-wrapper{
         input {
-            font-family: "Titillium Web", sans-serif;
+            font-family: 'Open Sans', sans-serif;
             color: #171D1C;
             padding: 5px 0px;
             width: 100%;
@@ -77,18 +83,18 @@ body {
 .search-page-wrapper{
     display: flex;
     justify-content: center;
-    margin-bottom: 15px;
+    background-color: #171D1C;
+    height: 100%;
 
   .search-result-wrapper{
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    
     padding-bottom: 15px;
     width: 50vw;
-    border-radius: 8px;
 
     &:hover{
-        background-color: #EFE9F4;
+        background-color:  #EFE9F4;
         cursor: pointer;
     }
 
@@ -121,4 +127,14 @@ body {
         display: flex;
         justify-content: space-between;
     }
+}
+
+.results-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }

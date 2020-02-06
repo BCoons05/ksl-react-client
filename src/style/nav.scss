@@ -20,7 +20,7 @@
             transition: .5s ease-in-out;
 
             &:hover {
-                color: #171D1C;
+                color: lightgray;
             }
         }
     }
@@ -35,11 +35,11 @@
         font-size: 20px;
 
         a {
-            color: #EFE9F4;
+            color: #171D1C;
             text-shadow: 1px 1px #5F634F;
             text-decoration: none;
             &:hover{
-                color: #5F634F;
+                color: lightgray;
             }
         }
 
@@ -48,8 +48,8 @@
         }
         
         .nav-link-active {
-            color: #171D1C;
-            text-shadow: #EFE9F4;
+            color: #EFE9F4;
+            text-shadow: #171D1C;
         }
     }
 }
