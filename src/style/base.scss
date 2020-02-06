@@ -140,3 +140,20 @@ body {
     margin-top: 20px;
     margin-bottom: 15px;
 }
+
+.home-page-wrapper{
+  display: flex;
+  justify-content: center;
+  background-color: #171D1C;
+  height: 100%;
+  
+  .dev-info-container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #EFE9F4;
+    margin-top: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
