@@ -12,6 +12,7 @@ export default class UserAlerts extends Component {
 
     responseGoogle = response => {
         let userName = response.profileObj.name
+        console.log("user name = ", userName)
         this.setState({
             loggedInName: userName
         })
