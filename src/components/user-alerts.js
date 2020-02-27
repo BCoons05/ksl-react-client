@@ -30,13 +30,19 @@ export default class UserAlerts extends Component {
     render(){
         return(
             <div>
-                <GoogleLogin
-                    clientId="866689668072-3ov7is4028nben3tloj0lh1emoab3me5.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseGoogle}
-                    cookiePolicy={'single_host_origin'}
-                />
+                {this.props.loggedInStatus == "LOGGED_IN" ?
+                    <div>
+                        <h2>Hello, {this.props.userName}</h2>
+                    </div> 
+                    :
+                    <GoogleLogin
+                        clientId="866689668072-3ov7is4028nben3tloj0lh1emoab3me5.apps.googleusercontent.com"
+                        buttonText="Login"
+                        onSuccess={this.responseGoogle}
+                        onFailure={this.responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
+                }
             </div>
         )
     }

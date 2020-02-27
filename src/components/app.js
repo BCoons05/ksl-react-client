@@ -82,6 +82,7 @@ render() {
           <div>
             <NavBar 
               loggedInStatus={this.state.loggedInStatus} 
+              userName={this.state.userName}
               handleSuccessfulLogout={this.handleSuccessfulLogout}
               handleSuccessfulLogin={this.handleSuccessfulLogin}
             />
