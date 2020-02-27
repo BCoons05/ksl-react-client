@@ -8,8 +8,8 @@ import { NavLink } from 'react-router-dom';
 
 export default class NavBar extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         // this.state={
         //     loggedInName: ""
@@ -24,12 +24,12 @@ export default class NavBar extends Component {
     //     this.props.handleSuccessfulLogin(userName)
     // }
 
-    // handleSignOut = () => {
-    //     this.props.handleSuccessfulLogout()
-    //     this.setState({
-    //         loggedInName: ""
-    //     })
-    // }
+    handleSignOut = () => {
+        this.props.handleSuccessfulLogout()
+        // this.setState({
+        //     loggedInName: ""
+        // })
+    }
     
     render(){
         return (
@@ -57,7 +57,7 @@ export default class NavBar extends Component {
                 <div className="right-side">
                     {this.props.loggedInStatus === "LOGGED_IN" ? (
                     <div>
-                        <h4>Welcome, {this.state.loggedInName}</h4>
+                        <h4>Welcome, {this.props.userName}</h4>
                         <a onClick={this.handleSignOut}>
                             Sign Out
                         </a>

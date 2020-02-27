@@ -34,12 +34,14 @@ export default class App extends Component {
           loggedInStatus: "LOGGED_IN",
           userName: name
         })
+        console.log("logged in")
       }
     
       handleUnsuccessfulLogin = () => {
         this.setState({
           loggedInStatus: "NOT_LOGGED_IN"
         })
+        console.log("login failed")
       }
     
       handleSuccessfulLogout = () => {
