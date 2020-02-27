@@ -12,7 +12,7 @@ export default class UserAlerts extends Component {
 
     responseGoogle = response => {
         let userName = response.profileObj.name
-        console.log("user name = ", userName)
+        // console.log("user name = ", userName)
         this.setState({
             loggedInName: userName
         })
@@ -30,7 +30,7 @@ export default class UserAlerts extends Component {
     render(){
         return(
             <div>
-                {this.props.loggedInStatus == "LOGGED_IN" ?
+                {this.props.loggedInStatus === "LOGGED_IN" ?
                     <div>
                         <h2>Hello, {this.props.userName}</h2>
                     </div> 
