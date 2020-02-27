@@ -87,7 +87,15 @@ render() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/search-form" component={SearchForm} />
-              <Route path="/user-alerts" component={UserAlerts} />
+              <Route path="/user-alerts" 
+                render = {props => (
+                  <UserAlerts 
+                    {...props} 
+                    handleSuccessfulLogin={this.handleSuccessfulLogin} 
+                    handleUnsuccessfulLogin={this.handleUnsuccessfulLogin} 
+                  />
+                )} 
+              />
               <Route component={NoMatch} />
             </Switch>
           </div>
