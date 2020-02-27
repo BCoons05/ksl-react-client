@@ -16,13 +16,14 @@ export default class UserAlerts extends Component {
             loggedInName: userName
         })
         this.props.handleSuccessfulLogin(userName)
+        this.props.history.push("/")
     }
 
     handleSignOut = () => {
-            this.props.handleSuccessfulLogout()
-            this.setState({
-                loggedInName: ""
-            })
+        this.props.handleSuccessfulLogout()
+        this.setState({
+            loggedInName: ""
+        })
     }
 
     render(){
