@@ -40,6 +40,7 @@ body {
       display: flex;
       justify-content: center;
       background-color: #EFE9F4;
+      width: 70vw;
       margin-top: 15px;
       margin-bottom: 15px;
       padding-bottom: 20px;
@@ -89,22 +90,21 @@ body {
   .search-result-wrapper{
     display: flex;
     justify-content: center;
-    
     padding-bottom: 15px;
-    width: 50vw;
+    width: 70vw;
 
     &:hover{
         background-color:  #EFE9F4;
         cursor: pointer;
     }
 
-    .result-icon-wrapper{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin-left: 20px;
-        margin-top: 15px;
-    }
+    // .result-icon-wrapper{
+    //     display: flex;
+    //     justify-content: flex-end;
+    //     align-items: center;
+    //     margin-left: 20px;
+    //     margin-top: 15px;
+    // }
 
     .search-btn-wrapper{
         display: flex;

@@ -11,25 +11,25 @@ export default class NavBar extends Component {
     constructor(){
         super()
 
-        this.state={
-            loggedInName: ""
-        }
+        // this.state={
+        //     loggedInName: ""
+        // }
     }
 
-    responseGoogle = response => {
-        let userName = response.profileObj.name
-        this.setState({
-            loggedInName: userName
-        })
-        this.props.handleSuccessfulLogin(userName)
-    }
+    // responseGoogle = response => {
+    //     let userName = response.profileObj.name
+    //     this.setState({
+    //         loggedInName: userName
+    //     })
+    //     this.props.handleSuccessfulLogin(userName)
+    // }
 
-    handleSignOut = () => {
-            this.props.handleSuccessfulLogout()
-            this.setState({
-                loggedInName: ""
-            })
-    }
+    // handleSignOut = () => {
+    //     this.props.handleSuccessfulLogout()
+    //     this.setState({
+    //         loggedInName: ""
+    //     })
+    // }
     
     render(){
         return (
@@ -64,13 +64,11 @@ export default class NavBar extends Component {
                     </div>
                     )
                     : 
-                    <GoogleLogin
-                        clientId="866689668072-3ov7is4028nben3tloj0lh1emoab3me5.apps.googleusercontent.com"
-                        buttonText="Login"
-                        onSuccess={this.responseGoogle}
-                        onFailure={this.responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                    />
+                    <div className="nav-link-wrapper">
+                        <NavLink to="/user-alerts" activeClassName="nav-link-active">
+                            Sign In
+                        </NavLink>
+                    </div>   
                     }
                 </div>
             </div>

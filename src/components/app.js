@@ -48,7 +48,7 @@ export default class App extends Component {
         })
       }
     
-    //   Not working
+    //   Not working, should check logged in status on mount
       checkLoginStatus = () => {
           const loggedInStatus = this.state.loggedInStatus
     
