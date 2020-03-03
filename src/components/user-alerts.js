@@ -35,7 +35,7 @@ export default class UserAlerts extends Component {
     getAlerts = () => {
         axios
         // .get("http://localhost:8000/carAverages")
-        .get("https://bpc-ksl-alerts-api.herokuapp.com/users")
+        .get("https://ksl-alerts-user-api.herokuapp.com/users")
         .then(response => {
             console.log("data received, checking for user...")
             response.data.forEach(user => {
@@ -43,7 +43,7 @@ export default class UserAlerts extends Component {
                     console.log("user found, getting alerts...")
 
                     axios
-                    .get("https://bpc-ksl-alerts-api.herokuapp.com/alerts")
+                    .get("https://ksl-alerts-user-api.herokuapp.com/alerts")
                     .then(response2 => {
                         response2.data.forEach(alert => {
                             if(alert.user_id === user.id){
@@ -59,7 +59,7 @@ export default class UserAlerts extends Component {
                     .then(userNotFound => {
                         if(this.state.userFound === false){
                             axios
-                            .post("https://bpc-ksl-alerts-api.herokuapp.com/user", {
+                            .post("https://ksl-alerts-user-api.herokuapp.com/user", {
                             // .post("http://localhost:5000/user", {
                                 "name": this.state.loggedInName
                             })
