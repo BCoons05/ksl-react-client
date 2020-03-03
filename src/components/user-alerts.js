@@ -1,12 +1,15 @@
 import React, {Component, useEffect, useState} from 'react'
 import GoogleLogin from 'react-google-login';
+import request from 'request'
 
 export default class UserAlerts extends Component {
     constructor(props){
         super(props)
 
         this.state={
-            loggedInName: ""
+            loggedInName: "",
+            userAlerts: [],
+            userFound: false
         }
     }
 
@@ -17,13 +20,58 @@ export default class UserAlerts extends Component {
             loggedInName: userName
         })
         this.props.handleSuccessfulLogin(userName)
-        this.props.history.push("/")
+        this.getAlerts()
+        this.props.history.push("/user-alerts")
     }
 
     handleSignOut = () => {
         this.props.handleSuccessfulLogout()
         this.setState({
             loggedInName: ""
+        })
+    }
+
+    getAlerts = () => {
+        axios
+        // .get("http://localhost:8000/carAverages")
+        .get("https://bpc-ksl-alerts-api.herokuapp.com/users")
+        .then(response => {
+            response.data.forEach(user => {
+                if(user.name === this.state.loggedInName){
+                    console.log("user found, getting alerts...")
+
+                    axios
+                    .get("https://bpc-ksl-alerts-api.herokuapp.com/alerts")
+                    .then(response2 => {
+                        response2.data.forEach(alert => {
+                            if(alert.user_id === user.id){
+                                this.setState({
+                                    userAlerts: this.state.userAlerts.concat(response2.data),
+                                    // blogItems: this.state.blogItems.concat(response.data.portfolio_blogs)
+                                    userFound: true
+                                })
+
+                                console.log(this.state.userAlerts)
+                            }
+                        })
+                    })
+                    .then(userNotFound => {
+                        if(this.state.userFound === false){
+                            axios
+                            .post("https://bpc-ksl-alerts-api.herokuapp.com/user", {
+                            // .post("http://localhost:5000/user", {
+                                "name": this.state.loggedInName
+                            })
+                            .catch(error => console.log("new user post error ", error))
+
+                            console.log("new user created")
+                        }
+                    })
+                }
+            })
+        })
+        .catch(err => {
+            console.log(err)
         })
     }
 
