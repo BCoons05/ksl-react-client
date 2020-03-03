@@ -1,5 +1,6 @@
 import React, {Component, useEffect, useState} from 'react'
 import GoogleLogin from 'react-google-login';
+import axios from 'axios';
 // import request from 'request'
 
 export default class UserAlerts extends Component {
