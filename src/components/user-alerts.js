@@ -37,6 +37,7 @@ export default class UserAlerts extends Component {
         // .get("http://localhost:8000/carAverages")
         .get("https://bpc-ksl-alerts-api.herokuapp.com/users")
         .then(response => {
+            console.log("data received, checking for user...")
             response.data.forEach(user => {
                 if(user.name === this.state.loggedInName){
                     console.log("user found, getting alerts...")
@@ -48,7 +49,6 @@ export default class UserAlerts extends Component {
                             if(alert.user_id === user.id){
                                 this.setState({
                                     userAlerts: this.state.userAlerts.concat(response2.data),
-                                    // blogItems: this.state.blogItems.concat(response.data.portfolio_blogs)
                                     userFound: true
                                 })
 
