@@ -22,7 +22,7 @@ export default class UserAlerts extends Component {
         })
         this.props.handleSuccessfulLogin(userName)
         this.getAlerts()
-        this.props.history.push("/user-alerts")
+        this.props.history.push("/")
     }
 
     handleSignOut = () => {

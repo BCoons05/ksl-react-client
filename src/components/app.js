@@ -10,7 +10,6 @@ import {
 } from "react-router-dom"
 
 import NavBar from "./navigation"
-import Footer from "./footer"
 import SearchForm from "./search-form"
 import NoMatch from "./no-match"
 import UserAlerts from "./user-alerts"
