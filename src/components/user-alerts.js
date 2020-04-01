@@ -37,7 +37,7 @@ export default class UserAlerts extends Component {
         // .get("http://localhost:8000/carAverages")
         .get("https://ksl-alerts-user-api.herokuapp.com/users")
         .then(response => {
-            console.log("data received, checking for user...")
+            console.log("data received, checking for user..." + this.state.loggedInName)
             response.data.forEach(user => {
                 if(user.name === this.state.loggedInName){
                     console.log("user found, getting alerts...")
