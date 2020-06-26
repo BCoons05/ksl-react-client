@@ -9,8 +9,7 @@ export default class UserAlerts extends Component {
 
         this.state={
             loggedInName: "",
-            userAlerts: [],
-            userFound: false
+            userAlerts: []
         }
     }
 
@@ -32,41 +31,32 @@ export default class UserAlerts extends Component {
         })
     }
 
+    // TODO shouldn't need to call the user api again. This info should probably be saved somewhere and I use it to call the alerts api
     getAlerts = () => {
         axios
-        // .get("http://localhost:8000/carAverages")
-        .get("https://ksl-alerts-user-api.herokuapp.com/users")
+        // .get(`http://localhost:8000/user/${this.state.loggedInName}`)
+        .get(`https://ksl-alerts-user-api.herokuapp.com/user/${this.state.loggedInName}`)
         .then(response => {
-            console.log("data received, checking for user..." + this.state.loggedInName)
-            response.data.forEach(user => {
-                if(user.name === this.state.loggedInName){
-                    console.log("user found, getting alerts...")
-
+            // console.log("data received, checking for user..." + this.state.loggedInName)
+            axios
+            .get(`https://ksl-alerts-user-api.herokuapp.com/alerts/${response.data.user_id}`)
+            .then(response2 => {
+                if(response2 == "User not found"){
                     axios
-                    .get("https://ksl-alerts-user-api.herokuapp.com/alerts")
-                    .then(response2 => {
-                        response2.data.forEach(alert => {
-                            if(alert.user_id === user.id){
-                                this.setState({
-                                    userAlerts: this.state.userAlerts.concat(response2.data),
-                                    userFound: true
-                                })
-
-                                console.log(this.state.userAlerts)
-                            }
-                        })
+                    .post("https://ksl-alerts-user-api.herokuapp.com/user", {
+                    // .post("http://localhost:5000/user", {
+                        "name": this.state.loggedInName
                     })
-                    .then(userNotFound => {
-                        if(this.state.userFound === false){
-                            axios
-                            .post("https://ksl-alerts-user-api.herokuapp.com/user", {
-                            // .post("http://localhost:5000/user", {
-                                "name": this.state.loggedInName
-                            })
-                            .catch(error => console.log("new user post error ", error))
+                    .catch(error => console.log("new user post error ", error))
 
-                            console.log("new user created")
-                        }
+                    console.log("new user created")
+                } else {
+                    response2.data.forEach(alert => {
+                        this.setState({
+                            userAlerts: this.state.userAlerts.concat(response2.data)
+                        })
+
+                        console.log(this.state.userAlerts)
                     })
                 }
             })

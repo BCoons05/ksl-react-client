@@ -57,11 +57,13 @@ export default class SearchForm extends Component {
 
         axios
         // .get('http://localhost:5000/cars')
-        .get('https://ksl-scraper-api-main.herokuapp.com/cars')
+        .get(`https://ksl-scraper-api-main.herokuapp.com/search/${this.state.searchMake}-${this.state.searchModel}-${this.state.searchYearMin}-${this.state.searchYearMax}-${this.state.searchMilesMin}-${this.state.searchMilesMax}-${this.state.searchPriceMin}-${this.state.searchPriceMax}`)
         .then(response => {
             
             response.data.forEach(car => {
-                this.checkMake(car)
+                this.setState({
+                    searchResults: [car].concat(this.state.searchResults)
+                })
             })
         })
         .then(data => {
