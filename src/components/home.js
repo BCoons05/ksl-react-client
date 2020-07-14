@@ -11,7 +11,7 @@ export default class Home extends Component {
 
     fetchKSL = (year, make, model, minMiles, maxMiles) => {
         request(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${year}/yearTo/${year}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, (error, response, html) => {
-            getCarData(html)
+            this.getCarData(html)
         })
     }
       
@@ -27,7 +27,7 @@ export default class Home extends Component {
         let minMiles = searchDetails[3]
         let maxMiles = searchDetails[4]
         
-        fetchKSL(year, make, model, minMiles, maxMiles)
+        this.fetchKSL(year, make, model, minMiles, maxMiles)
     }
 
     getCarData = (html) => {
@@ -77,7 +77,7 @@ export default class Home extends Component {
             }
         })
     
-        makeCarObject(newCarArray)
+        this.makeCarObject(newCarArray)
     }
     
     makeCarObject = carArray => {
