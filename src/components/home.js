@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import cheerio from 'cheerio'; 
+import axios from 'axios';
 // import request from 'request';
 
 export default class Home extends Component {
@@ -15,7 +16,9 @@ export default class Home extends Component {
         let yearMin = year - 1
         let yearMax = parseInt(year) + 1
         console.log(`fetching https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${yearMin}/yearTo/${yearMax}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`)
-        fetch(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${yearMin}/yearTo/${yearMax}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, { mode: `no-cors`}, (error, response, html) => {
+        axios
+        .get(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${yearMin}/yearTo/${yearMax}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, { mode: `no-cors`}) 
+        .then(response => {
             console.log("is this even going to getCarData?")
             this.getCarData(html)
         })
