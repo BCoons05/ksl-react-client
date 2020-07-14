@@ -99,7 +99,7 @@ render() {
                   />
                 )} 
               />
-              <Route path="/valuation/:slug" component={Home} />
+              {/* <Route path="/valuation/:slug" component={Home} /> */}
               <Route component={NoMatch} />
             </Switch>
           </div>
