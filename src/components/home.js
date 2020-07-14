@@ -25,9 +25,10 @@ export default class Home extends Component {
               }
               return response.blob();
             })
-            // .then(myBlob => {
-            //   myImage.src = URL.createObjectURL(myBlob);
-            // })
+            .then(myBlob => {
+                console.log("is this even going to getCarData?")
+                // myImage.src = URL.createObjectURL(myBlob);
+            })
             .catch(error => {
               console.error('There has been a problem with your fetch operation:', error);
             });
