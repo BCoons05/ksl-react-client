@@ -16,6 +16,7 @@ export default class Home extends Component {
         let yearMax = parseInt(year) + 1
         console.log(`fetching https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${yearMin}/yearTo/${yearMax}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`)
         fetch(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${yearMin}/yearTo/${yearMax}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, { mode: `no-cors`}, (error, response, html) => {
+            console.log("is this even going to getCarData?")
             this.getCarData(html)
         })
     }
@@ -37,6 +38,7 @@ export default class Home extends Component {
     }
 
     getCarData = (html) => {
+        console.log("Hello from getCarData")
         const data = cheerio.load(html)
         let carArray = []
         let linkArray = []
