@@ -9,6 +9,16 @@ export default class Home extends Component {
         }
     }
 
+    fetchKSL = (year, make, model, minMiles, maxMiles) => {
+        request(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${year}/yearTo/${year}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, (error, response, html) => {
+            getCarData(html)
+        })
+    }
+      
+    displayResults = (carDetails, miles, price, link ) => {
+        document.getElementByClassName("dev-info-container").innerHTML += `<a href="cars.ksl.com${link}">${carDetails} ${miles}miles $${price}</a><br>`
+    }
+
     parseSlug = () => {
         let searchDetails = this.props.match.params.slug.split('-')
         let year = searchDetails[0]
@@ -137,16 +147,6 @@ export default class Home extends Component {
             // console.log(`cars.ksl.com${link}`)
             // postCar(year, make, model, trim, price, miles, link)
         })
-    }
-
-    fetchKSL = (year, make, model, minMiles, maxMiles) => {
-        request(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${year}/yearTo/${year}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, (error, response, html) => {
-            getCarData(html)
-        })
-    }
-      
-    displayResults = (carDetails, miles, price, link ) => {
-        document.getElementByClassName("dev-info-container").innerHTML += `<a href="cars.ksl.com${link}">${carDetails} ${miles}miles $${price}</a><br>`
     }
 
     componentDidMount(){
