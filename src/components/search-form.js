@@ -57,7 +57,7 @@ export default class SearchForm extends Component {
 
         axios
         // .get('http://localhost:5000/cars')
-        .get(`https://ksl-scraper-api-main.herokuapp.com/search/${this.state.searchMake}-${this.state.searchModel}-${this.state.searchYearMin}-${this.state.searchYearMax}-${this.state.searchMilesMin}-${this.state.searchMilesMax}-${this.state.searchPriceMin}-${this.state.searchPriceMax}`)
+        .get(`https://ksl-alerts-user-api.herokuapp.com/${this.state.searchMake}-${this.state.searchModel}-${this.state.searchYearMin}-${this.state.searchYearMax}-${this.state.searchMilesMin}-${this.state.searchMilesMax}-${this.state.searchPriceMin}-${this.state.searchPriceMax}`)
         .then(response => {
             
             response.data.forEach(car => {

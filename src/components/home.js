@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import cheerio from 'cheerio'; 
-import request from 'request';
+// import request from 'request';
 
 export default class Home extends Component {
     constructor(props){
@@ -12,7 +12,7 @@ export default class Home extends Component {
     }
 
     fetchKSL = (year, make, model, minMiles, maxMiles) => {
-        request(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${year}/yearTo/${year}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, (error, response, html) => {
+        fetch(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${year}/yearTo/${year}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, (error, response, html) => {
             this.getCarData(html)
         })
     }
