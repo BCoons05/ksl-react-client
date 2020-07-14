@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-const cheerio = require('cheerio');
-const request = require('request');
+import * as cheerio from 'cheerio'; 
+import * as request from 'request';
 
 export default class Home extends Component {
     constructor(props){
