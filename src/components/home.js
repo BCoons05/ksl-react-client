@@ -12,8 +12,10 @@ export default class Home extends Component {
     }
 
     fetchKSL = (year, make, model, minMiles, maxMiles) => {
-        console.log(`fetching https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${year}/yearTo/${year}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`)
-        fetch(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${year - 1}/yearTo/${year + 1}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, { mode: `no-cors`}, (error, response, html) => {
+        let yearMin = year - 1
+        let yearMax = year + 1
+        console.log(`fetching https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${yearMin}/yearTo/${yearMax}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`)
+        fetch(`https://cars.ksl.com/search/make/${make}/model/${model}/yearFrom/${yearMin}/yearTo/${yearMax}/mileageFrom/${minMiles}/mileageTo/${maxMiles}/titleType/Clean+Title/page/0`, { mode: `no-cors`}, (error, response, html) => {
             this.getCarData(html)
         })
     }
