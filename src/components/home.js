@@ -45,11 +45,15 @@ export default class Home extends Component {
         let carData = data('.link').text()
         let price = data('.price').text()
         let miles = data('.mileage').text()
+
+        console.log(`car data 1: ${carData} ${price} ${miles}`)
     
         carData = carData.split('      ')
         price = price.split('                    ')
         miles = miles.split('            ')
     
+        console.log(`car data 2: ${carData} ${price} ${miles}`)
+
         data('.link').each((idx, el) => {
             const carLink = data(el).attr('href')
             linkArray.push(carLink)
@@ -78,6 +82,7 @@ export default class Home extends Component {
                 miles[i] = miles[i].split(',')
                 carInfo.push(miles[i].join(''))
                 carInfo.push(linkArray[i])
+                console.log("newCarArray = " + newCarArray)
                 newCarArray.push(carInfo)
                 i++
             }
